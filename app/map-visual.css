@@ -1,0 +1,615 @@
+/* Generated West Fangezhuang 3D sand-table map and source-aligned hotspots. */
+.map-canvas {
+  min-height: 760px;
+  background: #06130f;
+}
+
+.map-canvas .map-ambient {
+  display: none;
+}
+
+.isometric-land {
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  border: 0;
+  border-radius: 0;
+  background: url('../assets/xifan-3d-map.png') center / cover no-repeat;
+  box-shadow: none;
+}
+
+.isometric-land::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(3, 16, 12, .24), transparent 25%, transparent 70%, rgba(3, 16, 12, .38));
+}
+
+.isometric-land > * {
+  display: none;
+}
+
+.map-canvas::after {
+  z-index: 2;
+  background: linear-gradient(90deg, rgba(3,18,12,.48), transparent 18%, transparent 82%, rgba(3,18,12,.26)), linear-gradient(0deg, rgba(3,18,12,.52), transparent 24%);
+}
+
+.map-caption {
+  z-index: 8;
+  text-shadow: 0 2px 18px rgba(0,0,0,.9);
+}
+
+.route-layer { z-index: 5; }
+.map-marker { z-index: 9; }
+.map-legend { z-index: 10; }
+
+/* Relative positions follow the supplied village point map: north at top. */
+[data-testid='map-marker-p6'] { left: 65% !important; top: 18% !important; }
+[data-testid='map-marker-p2'] { left: 66% !important; top: 48% !important; }
+[data-testid='map-marker-p1'] { left: 63% !important; top: 57% !important; }
+[data-testid='map-marker-p5'] { left: 52% !important; top: 63% !important; }
+[data-testid='map-marker-p3'] { left: 59% !important; top: 72% !important; }
+[data-testid='map-marker-p4'] { left: 73% !important; top: 72% !important; }
+[data-testid='map-marker-p7'] { left: 35% !important; top: 77% !important; }
+[data-testid='map-marker-p8'] { left: 59% !important; top: 57% !important; }
+[data-testid='map-marker-p9'] { left: 54% !important; top: 72% !important; }
+[data-testid='map-marker-p10'] { left: 68% !important; top: 72% !important; }
+/* Keep the long labels clear of neighboring hotspots on the enlarged map. */
+[data-testid='map-marker-p6'] .marker-label,
+[data-testid='map-marker-p2'] .marker-label { margin-left: 0; margin-bottom: 86px; }
+[data-testid='map-marker-p1'] .marker-label,
+[data-testid='map-marker-p5'] .marker-label { margin-left: 0; margin-top: 84px; }
+[data-testid='map-marker-p3'] .marker-label,
+[data-testid='map-marker-p4'] .marker-label { margin-left: 0; margin-top: 84px; }
+[data-testid='map-marker-p7'] .marker-label { margin-left: 0; margin-top: 84px; }
+
+.marker-icon {
+  box-shadow: 0 0 0 3px rgba(5,24,17,.42), 0 15px 34px rgba(0,0,0,.58);
+}
+
+.marker-label {
+  min-width: 132px;
+  border-color: rgba(255,255,255,.2);
+  background: rgba(4,20,15,.88);
+}
+
+@media (max-width: 1100px) {
+  .map-canvas { min-height: 680px; }
+  .isometric-land { background-size: cover; }
+}
+
+@media (max-width: 820px) {
+  .map-canvas { min-height: 640px; }
+  .isometric-land { background-position: 50% center; }
+  .marker-label { display: flex; min-width: 104px; font-size: 10px; }
+}
+
+@media (max-width: 560px) {
+  .map-canvas { min-height: 600px; }
+  .isometric-land { background-size: auto 100%; background-position: 48% center; }
+  .marker-label { display: none; }
+}
+
+/* User review pass: larger sand-table, smaller route panel and cleaner point labels. */
+.season-bar { overflow: hidden !important; scrollbar-width: none; }
+.season-bar::-webkit-scrollbar { display: none; }
+
+@media (min-width: 821px) {
+  .map-shell { grid-template-columns: minmax(0, 1fr) 320px !important; min-height: 820px; }
+  .map-canvas { min-height: 820px; }
+  .isometric-land { background-size: 112% auto; background-position: 50% 48%; }
+  .planner-panel { padding: 18px 18px 20px; }
+  .season-summary { margin-top: 16px; padding: 14px; }
+  .planner-title { margin-top: 18px; }
+  .planner-title h3 { font-size: 22px; }
+  .route-list { max-height: 250px; }
+}
+
+.marker-icon { width: 52px; height: 52px; border-radius: 14px 14px 14px 4px; }
+.marker-ip { width: 44px; height: 44px; }
+.marker-pulse { left: 17px; top: 17px; width: 16px; height: 16px; }
+.marker-label { min-width: 96px; max-width: 132px; padding: 6px 9px; border-radius: 9px; font-size: 10px; line-height: 1.25; white-space: normal; }
+.marker-label small { display: none !important; }
+.map-marker.is-active .marker-icon { transform: translateY(-4px) scale(1.08); }
+
+[data-testid="map-marker-p6"] .marker-label,
+[data-testid="map-marker-p2"] .marker-label { margin-left: 0; margin-bottom: 66px; }
+
+[data-testid="map-marker-p1"] .marker-label,
+[data-testid="map-marker-p5"] .marker-label,
+[data-testid="map-marker-p3"] .marker-label,
+[data-testid="map-marker-p4"] .marker-label,
+[data-testid="map-marker-p7"] .marker-label { margin-left: 0; margin-top: 66px; }
+
+@media (max-width: 1100px) and (min-width: 821px) {
+  .map-shell { grid-template-columns: minmax(0, 1fr) 300px !important; }
+  .planner-panel { padding: 16px; }
+}
+
+/* Route guide replaces the former seasonal learning list. */
+.route-guide-section {
+  position: relative;
+  padding: 110px clamp(24px, 6vw, 120px);
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.route-guide-head {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(320px, .62fr);
+  gap: 42px;
+  align-items: end;
+  margin-bottom: 34px;
+}
+
+.route-guide-head h2 {
+  margin-top: 14px;
+  font-family: var(--font-serif);
+  font-size: clamp(42px, 4.4vw, 72px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.route-guide-head h2 em {
+  color: var(--wheat);
+  display: block;
+}
+
+.route-guide-head p {
+  color: rgba(16,36,28,.62);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.guide-card {
+  display: flex;
+  min-height: 330px;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid rgba(16,36,28,.13);
+  border-radius: 8px;
+  padding: 22px;
+  background: #fffdf6;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+
+.guide-card:hover,
+.guide-card.is-active {
+  transform: translateY(-3px);
+  border-color: rgba(230,184,74,.65);
+  box-shadow: 0 18px 45px rgba(16,36,28,.12);
+}
+
+.guide-group {
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+}
+
+.guide-card strong {
+  margin-top: 10px;
+  font-family: var(--font-serif);
+  font-size: 31px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.guide-card > small {
+  margin-top: 9px;
+  color: rgba(16,36,28,.52);
+  font-size: 12px;
+}
+
+.guide-schedule {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 17px;
+}
+
+.guide-schedule span {
+  border: 1px solid rgba(16,36,28,.12);
+  border-radius: 999px;
+  padding: 6px 9px;
+  background: rgba(47,125,74,.05);
+  color: rgba(16,36,28,.72);
+  font-size: 10px;
+}
+
+.guide-card p {
+  margin-top: 16px;
+  color: rgba(16,36,28,.67);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.guide-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 18px;
+  color: var(--green-500);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.guide-card:hover .guide-action svg,
+.guide-card.is-active .guide-action svg {
+  transform: translateX(4px);
+}
+
+.guide-action svg {
+  transition: transform .22s ease;
+}
+
+[data-testid='map-marker-p11'] { left: 57% !important; top: 70% !important; }
+[data-testid='map-marker-p11'] .marker-label { margin-left: 0; margin-top: 66px; }
+
+@media (max-width: 900px) {
+  .route-guide-head,
+  .guide-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .route-guide-section {
+    padding: 82px 18px;
+  }
+
+  .guide-card {
+    min-height: auto;
+    padding: 18px;
+  }
+
+  .guide-card strong {
+    font-size: 27px;
+  }
+}
+
+/* User-provided hotspot calibration from 2026-07-12 annotated 2.5D map. */
+[data-testid='map-marker-p5'] { left: 55.5% !important; top: 36.8% !important; } /* 京瓦奶牛示范园 */
+[data-testid='map-marker-p4'] { left: 69.7% !important; top: 35.4% !important; } /* 平谷大桃采摘园 */
+[data-testid='map-marker-p11'] { left: 59.2% !important; top: 47.2% !important; } /* 蓝莓智慧温室 */
+[data-testid='map-marker-p8'] { left: 64.0% !important; top: 50.1% !important; } /* 自然美育工坊 */
+[data-testid='map-marker-p1'] { left: 64.1% !important; top: 52.9% !important; } /* 科技小院 */
+[data-testid='map-marker-p6'] { left: 54.2% !important; top: 57.7% !important; } /* 北京鳄鱼欢乐谷 */
+[data-testid='map-marker-p7'] { left: 56.4% !important; top: 60.8% !important; } /* 正大鸡蛋梦工厂 */
+[data-testid='map-marker-p2'] { left: 73.7% !important; top: 63.7% !important; } /* 无人机系统研究院 */
+[data-testid='map-marker-p10'] { left: 52.2% !important; top: 74.4% !important; } /* 草莓种子繁殖基地 */
+[data-testid='map-marker-p9'] { left: 47.0% !important; top: 77.4% !important; } /* 生菜水培基地 */
+[data-testid='map-marker-p3'] { left: 52.8% !important; top: 81.1% !important; } /* 番茄无土栽培基地 */
+
+/* Label directions tuned to match the supplied annotation and reduce overlap. */
+[data-testid='map-marker-p5'] .marker-label,
+[data-testid='map-marker-p4'] .marker-label,
+[data-testid='map-marker-p11'] .marker-label,
+[data-testid='map-marker-p8'] .marker-label,
+[data-testid='map-marker-p1'] .marker-label,
+[data-testid='map-marker-p6'] .marker-label,
+[data-testid='map-marker-p7'] .marker-label,
+[data-testid='map-marker-p2'] .marker-label,
+[data-testid='map-marker-p10'] .marker-label,
+[data-testid='map-marker-p9'] .marker-label,
+[data-testid='map-marker-p3'] .marker-label {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: 7px !important;
+}
+
+/* Split hotspot labels left/right so icons and text never cover each other. */
+.map-marker {
+  overflow: visible;
+}
+
+.map-marker .marker-icon {
+  flex: 0 0 auto;
+}
+
+.map-marker .marker-label {
+  position: absolute;
+  z-index: 12;
+  top: 50%;
+  left: 60px;
+  display: block;
+  width: max-content;
+  min-width: 0;
+  max-width: 156px;
+  margin: 0 !important;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+[data-testid='map-marker-p4'] .marker-label,
+[data-testid='map-marker-p5'] .marker-label,
+[data-testid='map-marker-p8'] .marker-label,
+[data-testid='map-marker-p1'] .marker-label,
+[data-testid='map-marker-p2'] .marker-label,
+[data-testid='map-marker-p3'] .marker-label,
+[data-testid='map-marker-p7'] .marker-label,
+[data-testid='map-marker-p10'] .marker-label {
+  left: 60px;
+  right: auto;
+  text-align: left;
+}
+
+[data-testid='map-marker-p11'] .marker-label,
+[data-testid='map-marker-p6'] .marker-label,
+[data-testid='map-marker-p9'] .marker-label {
+  left: auto;
+  right: 60px;
+  text-align: right;
+}
+
+[data-testid='map-marker-p11'] .marker-label { transform: translateY(-92%); }
+[data-testid='map-marker-p8'] .marker-label { transform: translateY(-66%); }
+[data-testid='map-marker-p1'] .marker-label { transform: translateY(12%); }
+[data-testid='map-marker-p6'] .marker-label { transform: translateY(-84%); }
+[data-testid='map-marker-p7'] .marker-label { transform: translateY(-18%); }
+[data-testid='map-marker-p10'] .marker-label { transform: translateY(-78%); }
+[data-testid='map-marker-p9'] .marker-label { transform: translateY(-20%); }
+[data-testid='map-marker-p3'] .marker-label { transform: translateY(22%); }
+
+@media (max-width: 820px) {
+  .map-marker .marker-label {
+    left: 52px;
+    max-width: 128px;
+    font-size: 9px;
+  }
+
+  [data-testid='map-marker-p11'] .marker-label,
+  [data-testid='map-marker-p6'] .marker-label,
+  [data-testid='map-marker-p9'] .marker-label {
+    right: 52px;
+  }
+}
+
+/* Monthly theme intro in the route builder card. */
+.season-intro-text {
+  margin-top: 10px !important;
+  color: rgba(255,255,255,.72) !important;
+  font-size: 11px !important;
+  line-height: 1.65 !important;
+}
+
+.season-projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.season-projects span {
+  border: 1px solid rgba(230,184,74,.22);
+  border-radius: 999px;
+  padding: 5px 8px;
+  background: rgba(230,184,74,.08);
+  color: rgba(247,244,234,.72);
+  font-size: 9px;
+  line-height: 1.2;
+}
+
+/* Detail card imagery: real point photo + Dida IP accent */
+.drawer-image .drawer-main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.drawer-image .drawer-ip {
+  position: absolute;
+  z-index: 2;
+  right: 22px;
+  bottom: 18px;
+  width: 96px !important;
+  height: 96px !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, .32));
+  transform-origin: 50% 100%;
+  animation: drawer-ip-pop .45s cubic-bezier(.22,.9,.35,1) both;
+}
+@keyframes drawer-ip-pop {
+  from { transform: translateY(10px) scale(.86); opacity: 0; }
+}
+.route-segment--active::before {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #fff7d8;
+  transform: translateY(-50%);
+  box-shadow: 0 0 12px rgba(230,184,74,.9);
+}
+/* Highlights carousel: 6000x4000 source photos use a native 3:2 frame */
+.highlight-section {
+  min-height: auto;
+  grid-template-columns: minmax(0, 1.08fr) minmax(420px, .92fr);
+  align-items: center;
+  gap: clamp(36px, 5vw, 92px);
+  padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 86px);
+}
+.highlight-photo.highlight-carousel {
+  position: relative;
+  min-height: 0;
+  aspect-ratio: 3 / 2;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 30px;
+  background: #081d16;
+  box-shadow: 0 26px 90px rgba(0, 0, 0, .32), inset 0 0 0 1px rgba(255, 255, 255, .1);
+}
+.carousel-track,
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+}
+.carousel-slide {
+  margin: 0;
+  opacity: 0;
+  animation: highlight-slide 24s infinite;
+}
+.carousel-slide:nth-child(1) { animation-delay: 0s; }
+.carousel-slide:nth-child(2) { animation-delay: 4s; }
+.carousel-slide:nth-child(3) { animation-delay: 8s; }
+.carousel-slide:nth-child(4) { animation-delay: 12s; }
+.carousel-slide:nth-child(5) { animation-delay: 16s; }
+.carousel-slide:nth-child(6) { animation-delay: 20s; }
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.96) contrast(1.02);
+  transform: scale(1.02);
+  animation: highlight-kenburns 24s infinite;
+}
+.carousel-slide figcaption {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 22px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 18px;
+  padding: 14px 16px;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(5, 22, 16, .82), rgba(5, 22, 16, .36));
+  backdrop-filter: blur(14px);
+}
+.carousel-slide figcaption strong {
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.carousel-slide figcaption span {
+  color: rgba(255, 255, 255, .72);
+  font-size: 12px;
+  line-height: 1.55;
+  text-align: right;
+}
+.carousel-dots {
+  position: absolute;
+  z-index: 3;
+  left: 26px;
+  top: 24px;
+  display: flex;
+  gap: 8px;
+}
+.carousel-dots span {
+  width: 34px;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .28);
+}
+.carousel-dots span::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  border-radius: inherit;
+  background: var(--wheat);
+  animation: carousel-dot 24s infinite;
+}
+.carousel-dots span:nth-child(1)::after { animation-delay: 0s; }
+.carousel-dots span:nth-child(2)::after { animation-delay: 4s; }
+.carousel-dots span:nth-child(3)::after { animation-delay: 8s; }
+.carousel-dots span:nth-child(4)::after { animation-delay: 12s; }
+.carousel-dots span:nth-child(5)::after { animation-delay: 16s; }
+.carousel-dots span:nth-child(6)::after { animation-delay: 20s; }
+@keyframes highlight-slide {
+  0% { opacity: 0; }
+  4% { opacity: 1; }
+  16% { opacity: 1; }
+  20% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes highlight-kenburns {
+  0% { transform: scale(1.02); }
+  20% { transform: scale(1.08); }
+  100% { transform: scale(1.08); }
+}
+@keyframes carousel-dot {
+  0% { transform: translateX(-100%); }
+  4%, 16% { transform: translateX(0); }
+  20%, 100% { transform: translateX(100%); }
+}
+@media (max-width: 1100px) {
+  .highlight-section { grid-template-columns: 1fr; }
+  .highlight-copy { padding: 0; }
+}
+@media (max-width: 560px) {
+  .highlight-section { padding: 46px 16px; }
+  .highlight-photo.highlight-carousel { border-radius: 20px; }
+  .carousel-slide figcaption { left: 12px; right: 12px; bottom: 12px; flex-direction: column; align-items: flex-start; }
+  .carousel-slide figcaption span { text-align: left; }
+  .carousel-dots { left: 14px; top: 14px; }
+  .carousel-dots span { width: 22px; }
+}
+/* Refine highlights carousel proportions after user review */
+.highlight-section {
+  grid-template-columns: minmax(0, .98fr) minmax(390px, .9fr);
+  gap: clamp(28px, 4vw, 70px);
+  padding: clamp(34px, 5vw, 68px) clamp(24px, 5vw, 78px) !important;
+}
+.highlight-photo.highlight-carousel {
+  max-width: 620px;
+  justify-self: center;
+  border-radius: 24px;
+}
+.highlight-copy {
+  padding: 28px 0 !important;
+}
+.highlight-copy h2 {
+  font-size: clamp(40px, 4.1vw, 64px) !important;
+}
+.highlight-copy > p {
+  margin-top: 20px;
+}
+.tech-grid {
+  margin-top: 30px;
+}
+.tech-grid div {
+  min-height: 104px;
+  padding: 18px 20px;
+}
+.carousel-slide figcaption {
+  left: 18px;
+  right: 18px;
+  bottom: 16px;
+  padding: 12px 14px;
+}
+.carousel-slide figcaption strong {
+  font-size: 16px;
+}
+.carousel-slide figcaption span {
+  font-size: 11px;
+}
+.carousel-dots {
+  left: 20px;
+  top: 18px;
+}
+@media (max-width: 1100px) {
+  .highlight-section { grid-template-columns: 1fr; }
+  .highlight-photo.highlight-carousel { max-width: 720px; }
+}
